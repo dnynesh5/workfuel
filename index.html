@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WorkFuel - Premium Chai Subscription</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+        header {
+            background: #ff8800;
+            color: white;
+            padding: 15px;
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+            padding: 20px;
+        }
+        .section {
+            padding: 20px;
+            background: white;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #ff8800;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        input, textarea {
+            width: 80%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        ☕ WorkFuel - Office Chai Subscription 🍵
+    </header>
+    
+    <div class="container">
+        <div class="section" id="userType">
+            <h2>Are you a first-time user or a subscriber?</h2>
+            <button class="btn" onclick="showMCQ()">First-Time User</button>
+            <button class="btn" onclick="showSubscriberPage()">Subscriber</button>
+        </div>
+
+        <div class="section" id="mcqPage" style="display: none;">
+            <h2>Does your office struggle with chai breaks? ☕</h2>
+            <button class="btn" onclick="nextMCQ()">Yes</button>
+            <button class="btn" onclick="nextMCQ()">No</button>
+        </div>
+        
+        <div class="section" id="mcqPage2" style="display: none;">
+            <h2>Do you face inconsistent taste and hygiene issues? 🚰</h2>
+            <button class="btn" onclick="showSolution()">Yes</button>
+            <button class="btn" onclick="showSolution()">No</button>
+        </div>
+        
+        <div class="section" id="subscriptionPage" style="display: none;">
+            <h2>Why Choose WorkFuel? 🤩</h2>
+            <p>✅ Consistent chai & coffee taste ☕</p>
+            <p>✅ Timely delivery, no more waiting ⏳</p>
+            <p>✅ Hygienic preparation with RO water 🚰</p>
+            <p>✅ Affordable pricing for every office size 💰</p>
+            <h3>Enter your employee count:</h3>
+            <input type="number" id="employeeCount" placeholder="Enter number of employees">
+            <button class="btn" onclick="calculatePlan()">Get Subscription Plan</button>
+            <p id="planResult"></p>
+        </div>
+
+        <div class="section" id="subscriptionForm" style="display: none;">
+            <h2>Fill Your Details to Subscribe 📝</h2>
+            <a href="https://forms.gle/sTTYLYuPX5HaFMVC7" class="btn" target="_blank">Get Subscription</a>
+            <h3>Or Pay Now 💳</h3>
+            <a href="upi://pay?pa=yourupiid@upi&pn=WorkFuel&cu=INR" class="btn">Pay via Google Pay</a>
+        </div>
+
+        <div class="section" id="valuesPage" style="display: none;">
+            <h2>Our Core Values 🌟</h2>
+            <p>✔️ Commitment to Quality 🏆</p>
+            <p>✔️ Customer Satisfaction First 😊</p>
+            <p>✔️ Hygiene and Safety Standards 🧼</p>
+            <p>✔️ Fueling Productivity with Every Cup 🚀</p>
+            <button class="btn" onclick="redirectToHome()">Back to Home</button>
+        </div>
+
+        <div class="section" id="subscriberPage" style="display: none;">
+            <h2>Your Tea is on Time! ☕</h2>
+            <p>If you have any queries, please write back to us at <strong>support@workfuel.com</strong></p>
+            <button class="btn" onclick="redirectToHome()">Back to Home</button>
+        </div>
+    </div>
+
+    <script>
+        function showMCQ() {
+            document.getElementById("userType").style.display = "none";
+            document.getElementById("mcqPage").style.display = "block";
+        }
+        function nextMCQ() {
+            document.getElementById("mcqPage").style.display = "none";
+            document.getElementById("mcqPage2").style.display = "block";
+        }
+        function showSolution() {
+            document.getElementById("mcqPage2").style.display = "none";
+            document.getElementById("subscriptionPage").style.display = "block";
+        }
+        function showSubscription() {
+            document.getElementById("userType").style.display = "none";
+            document.getElementById("subscriptionPage").style.display = "block";
+        }
+        function calculatePlan() {
+            let count = document.getElementById("employeeCount").value;
+            let perEmployeeCost = count * 25;
+            let plan = `₹${count * 100} for 6 months`;
+            document.getElementById("planResult").innerHTML = `Your subscription plan: ${plan} <br> Per employee chai/coffee cost: ₹${perEmployeeCost}`;
+            setTimeout(() => {
+                document.getElementById("subscriptionPage").style.display = "none";
+                document.getElementById("subscriptionForm").style.display = "block";
+            }, 3000);
+        }
+        function redirectToHome() {
+            location.reload();
+        }
+        function showSubscriberPage() {
+            document.getElementById("userType").style.display = "none";
+            document.getElementById("subscriberPage").style.display = "block";
+        }
+    </script>
+</body>
+</html>
