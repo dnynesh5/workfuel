@@ -139,16 +139,42 @@
             document.getElementById("userType").style.display = "none";
             document.getElementById("mcqPage").style.display = "block";
         }
+
+        function nextMCQ() {
+            document.getElementById("mcqPage").style.display = "none";
+            document.getElementById("mcqPage2").style.display = "block";
+        }
+
+        function showSolution() {
+            document.getElementById("mcqPage2").style.display = "none";
+            document.getElementById("subscriptionPage").style.display = "block";
+        }
+
         function showAbout() {
             document.querySelectorAll('.section').forEach(el => el.style.display = 'none');
             document.getElementById("aboutPage").style.display = "block";
         }
+
         function redirectToHome() {
             location.reload();
         }
+
         function showSubscriberPage() {
             document.getElementById("userType").style.display = "none";
             document.getElementById("subscriberPage").style.display = "block";
+        }
+
+        function calculatePlan() {
+            var employeeCount = document.getElementById("employeeCount").value;
+            if (employeeCount <= 50) {
+                document.getElementById("planResult").innerText = "Basic Plan: ₹15 per cup. Suitable for small offices!";
+            } else if (employeeCount <= 200) {
+                document.getElementById("planResult").innerText = "Standard Plan: ₹14 per cup. Great for medium-sized teams!";
+            } else {
+                document.getElementById("planResult").innerText = "Premium Plan: ₹13 per cup. Ideal for large offices!";
+            }
+            document.getElementById("subscriptionPage").style.display = "none";
+            document.getElementById("subscriptionForm").style.display = "block";
         }
     </script>
 </body>
