@@ -194,7 +194,13 @@
                 <strong>Plan Details:</strong><br>
                 ${pricing}<br><br>
                 <strong>Subscription Fee:</strong><br>
-                ${subscriptionFee}`;
+                ${subscriptionFee}<br><br>
+                <button class="btn" onclick="showSubscriptionForm()">Proceed to Subscribe</button>`;
+        }
+
+        function showSubscriptionForm() {
+            document.getElementById("subscriptionPage").style.display = "none";
+            document.getElementById("subscriptionForm").style.display = "block";
         }
     </script>
 </body>
