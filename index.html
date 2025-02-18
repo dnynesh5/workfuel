@@ -19,7 +19,20 @@
             font-size: 24px;
             display: flex;
             align-items: center;
-            justify-content: center;
+            justify-content: space-between;
+        }
+        .nav {
+            display: flex;
+            gap: 15px;
+            padding-right: 20px;
+        }
+        .nav button {
+            background: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-weight: bold;
         }
         .container {
             width: 80%;
@@ -55,6 +68,10 @@
 <body>
     <header>
         ☕ WorkFuel - Office Chai Subscription 🍵
+        <div class="nav">
+            <button onclick="redirectToHome()">Home</button>
+            <button onclick="showAbout()">About Us</button>
+        </div>
     </header>
     
     <div class="container">
@@ -109,6 +126,12 @@
             <p>If you have any queries, please write back to us at <strong>support@workfuel.com</strong></p>
             <button class="btn" onclick="redirectToHome()">Back to Home</button>
         </div>
+
+        <div class="section" id="aboutPage" style="display: none;">
+            <h2>About WorkFuel 🍵</h2>
+            <p>WorkFuel was born from a simple yet powerful idea—great chai fuels great work. Our founder, tired of inconsistent, unhygienic, and uninspiring office tea, decided to create a solution. WorkFuel delivers high-quality, consistently brewed chai and coffee, ensuring that every cup energizes your productivity. We believe in making every break count, keeping employees refreshed and engaged, all while maintaining the highest hygiene and taste standards.</p>
+            <button class="btn" onclick="redirectToHome()">Back to Home</button>
+        </div>
     </div>
 
     <script>
@@ -116,27 +139,9 @@
             document.getElementById("userType").style.display = "none";
             document.getElementById("mcqPage").style.display = "block";
         }
-        function nextMCQ() {
-            document.getElementById("mcqPage").style.display = "none";
-            document.getElementById("mcqPage2").style.display = "block";
-        }
-        function showSolution() {
-            document.getElementById("mcqPage2").style.display = "none";
-            document.getElementById("subscriptionPage").style.display = "block";
-        }
-        function showSubscription() {
-            document.getElementById("userType").style.display = "none";
-            document.getElementById("subscriptionPage").style.display = "block";
-        }
-        function calculatePlan() {
-            let count = document.getElementById("employeeCount").value;
-            let perEmployeeCost = count * 25;
-            let plan = `₹${count * 100} for 6 months`;
-            document.getElementById("planResult").innerHTML = `Your subscription plan: ${plan} <br> Per employee chai/coffee cost: ₹${perEmployeeCost}`;
-            setTimeout(() => {
-                document.getElementById("subscriptionPage").style.display = "none";
-                document.getElementById("subscriptionForm").style.display = "block";
-            }, 3000);
+        function showAbout() {
+            document.querySelectorAll('.section').forEach(el => el.style.display = 'none');
+            document.getElementById("aboutPage").style.display = "block";
         }
         function redirectToHome() {
             location.reload();
