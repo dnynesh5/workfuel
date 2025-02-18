@@ -190,9 +190,11 @@
                 subscriptionFee = "One-time subscription fee: ₹10,000 (refundable after 6 months)";
             }
 
-            document.getElementById("planResult").innerHTML = `<strong>Plan Details:</strong><br>${pricing}<br><br><strong>Subscription Fee:</strong><br>${subscriptionFee}`;
-            document.getElementById("subscriptionPage").style.display = "none";
-            document.getElementById("subscriptionForm").style.display = "block";
+            document.getElementById("planResult").innerHTML = `
+                <strong>Plan Details:</strong><br>
+                ${pricing}<br><br>
+                <strong>Subscription Fee:</strong><br>
+                ${subscriptionFee}`;
         }
     </script>
 </body>
